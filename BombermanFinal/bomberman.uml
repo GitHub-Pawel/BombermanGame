@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>bomberman</OriginalElement>
+  <nodes>
+    <node x="1430.282385105205" y="344.0">bomberman.component.Board</node>
+    <node x="1387.1594545957923" y="563.0">bomberman.gui.BombermanGUI</node>
+    <node x="290.99134482281283" y="377.0">bomberman.exception.WrongKeyException</node>
+    <node x="881.7526232004432" y="366.0">bomberman.entitie.box.FinalGate</node>
+    <node x="1534.1202380952382" y="235.0">bomberman.entitie.basic.Wall</node>
+    <node x="1025.29428986711" y="1019.0">bomberman.gui.MainMenuGUI</node>
+    <node x="23.595238095238074" y="519.0">bomberman.entitie.Player</node>
+    <node x="465.9913448228128" y="377.0">bomberman.observers.KeyboardObserver</node>
+    <node x="1266.7526232004432" y="377.0">bomberman.observers.GhostObserver</node>
+    <node x="1053.7526232004432" y="377.0">bomberman.exception.GhostMovingException</node>
+    <node x="770.6118355481732" y="530.0">bomberman.entitie.box.Case</node>
+    <node x="10.5" y="848.0">bomberman.tests.PlayerTest</node>
+    <node x="687.7526232004432" y="344.0">bomberman.entitie.box.Bonus</node>
+    <node x="1661.3345238095237" y="235.0">bomberman.entitie.basic.Floor</node>
+    <node x="1049.79428986711" y="1098.0">bomberman.Main</node>
+    <node x="106.65262320044326" y="1019.0">bomberman.tests.KeyboardTest</node>
+    <node x="423.3773428848285" y="235.0">bomberman.inputOutput.Sound</node>
+    <node x="1161.1898428848285" y="0.0">bomberman.component.Block</node>
+    <node x="1859.1216708194909" y="563.0">bomberman.entitie.Fire</node>
+    <node x="869.2942898671099" y="1019.0">bomberman.tests.GameEngineTest</node>
+    <node x="917.7526232004432" y="826.0">bomberman.GameEngine</node>
+    <node x="176.80773809523805" y="235.0">bomberman.observers.BombObserver</node>
+    <node x="1178.7526232004432" y="530.0">bomberman.entitie.Ghost</node>
+    <node x="92.49134482281283" y="355.0">bomberman.entitie.Bomb</node>
+    <node x="360.3148428848285" y="541.0">bomberman.inputOutput.Keyboard</node>
+    <node x="1598.1216708194909" y="563.0">bomberman.tests.BoardTest</node>
+    <node x="1720.1216708194909" y="563.0">bomberman.gui.GameEndGUI</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="bomberman.GameEngine" target="bomberman.inputOutput.Keyboard">
+      <point x="-41.4375" y="-36.5" />
+      <point x="954.3151232004432" y="726.0" />
+      <point x="500.3148428848285" y="726.0" />
+      <point x="56.0" y="36.5" />
+    </edge>
+    <edge source="bomberman.tests.KeyboardTest" target="bomberman.entitie.Player">
+      <point x="-45.0" y="-14.5" />
+      <point x="121.65262320044326" y="999.0" />
+      <point x="0.0" y="999.0" />
+      <point x="0.0" y="796.0" />
+      <point x="34.738095238095184" y="796.0" />
+      <point x="-66.85714285714289" y="58.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.gui.GameEndGUI">
+      <point x="65.8125" y="-36.5" />
+      <point x="1061.5651232004432" y="786.0" />
+      <point x="1808.6216708194909" y="786.0" />
+      <point x="29.5" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.box.Bonus">
+      <point x="-17.0625" y="-36.5" />
+      <point x="978.6901232004432" y="676.0" />
+      <point x="705.198771456257" y="676.0" />
+      <point x="705.198771456257" y="499.0" />
+      <point x="708.0026232004432" y="499.0" />
+      <point x="-60.75" y="47.5" />
+    </edge>
+    <edge source="bomberman.entitie.Ghost" target="bomberman.inputOutput.Sound">
+      <point x="-36.0" y="-47.5" />
+      <point x="1214.7526232004432" y="489.0" />
+      <point x="1234.2526232004432" y="489.0" />
+      <point x="1234.2526232004432" y="284.0" />
+      <point x="494.2523428848285" y="284.0" />
+      <point x="30.375" y="14.5" />
+    </edge>
+    <edge source="bomberman.gui.BombermanGUI" target="bomberman.component.Board">
+      <point x="33.0" y="-14.5" />
+      <point x="1486.1594545957923" y="499.0" />
+      <point x="1477.4252422480622" y="499.0" />
+      <point x="-18.857142857142833" y="47.5" />
+    </edge>
+    <edge source="bomberman.tests.PlayerTest" target="bomberman.entitie.Player">
+      <point x="-25.25" y="-14.5" />
+      <point x="35.75" y="806.0" />
+      <point x="57.023809523809405" y="806.0" />
+      <point x="-44.57142857142867" y="58.5" />
+    </edge>
+    <edge source="bomberman.entitie.Ghost" target="bomberman.observers.GhostObserver">
+      <point x="36.0" y="-47.5" />
+      <point x="-41.66666666666674" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.box.Case" target="bomberman.component.Block">
+      <point x="0.0" y="-47.5" />
+      <point x="847.1118355481732" y="499.0" />
+      <point x="860.2526232004432" y="499.0" />
+      <point x="860.2526232004432" y="195.0" />
+      <point x="1208.3148428848285" y="195.0" />
+      <point x="-25.375" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.box.FinalGate">
+      <point x="2.4375" y="-36.5" />
+      <point x="998.1901232004432" y="656.0" />
+      <point x="1009.4913448228128" y="656.0" />
+      <point x="1009.4913448228128" y="499.0" />
+      <point x="1014.7526232004432" y="499.0" />
+      <point x="57.0" y="25.5" />
+    </edge>
+    <edge source="bomberman.tests.KeyboardTest" target="bomberman.GameEngine">
+      <point x="45.0" y="-14.5" />
+      <point x="211.65262320044326" y="959.0" />
+      <point x="956.7526232004432" y="959.0" />
+      <point x="-39.0" y="36.5" />
+    </edge>
+    <edge source="bomberman.tests.BoardTest" target="bomberman.entitie.basic.Floor">
+      <point x="37.875" y="-14.5" />
+      <point x="1686.4966708194909" y="499.0" />
+      <point x="1685.4341708194909" y="499.0" />
+      <point x="1685.4341708194909" y="324.0" />
+      <point x="1698.8345238095237" y="324.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.Ghost">
+      <point x="12.1875" y="-36.5" />
+      <point x="1007.9401232004432" y="676.0" />
+      <point x="1214.7526232004432" y="676.0" />
+      <point x="-36.0" y="47.5" />
+    </edge>
+    <edge source="bomberman.entitie.basic.Floor" target="bomberman.component.Block">
+      <point x="18.75" y="-14.5" />
+      <point x="1717.5845238095237" y="135.0" />
+      <point x="1288.0648428848285" y="135.0" />
+      <point x="54.375" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.basic.Floor">
+      <point x="56.0625" y="-36.5" />
+      <point x="1051.8151232004432" y="766.0" />
+      <point x="1709.6216708194909" y="766.0" />
+      <point x="1709.6216708194909" y="324.0" />
+      <point x="1713.8345238095237" y="324.0" />
+      <point x="15.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.Player" target="bomberman.inputOutput.Sound">
+      <point x="58.5" y="-58.5" />
+      <point x="160.09523809523807" y="499.0" />
+      <point x="280.49134482281283" y="499.0" />
+      <point x="280.49134482281283" y="324.0" />
+      <point x="453.7523428848285" y="324.0" />
+      <point x="-10.125" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.Player" target="bomberman.entitie.Bomb">
+      <point x="19.5" y="-58.5" />
+      <point x="121.09523809523807" y="499.0" />
+      <point x="106.89134482281293" y="499.0" />
+      <point x="-57.59999999999991" y="36.5" />
+    </edge>
+    <edge source="bomberman.tests.GameEngineTest" target="bomberman.GameEngine">
+      <point x="11.333333333333258" y="-14.5" />
+      <point x="948.6276232004432" y="979.0" />
+      <point x="1008.7526232004432" y="979.0" />
+      <point x="13.0" y="36.5" />
+    </edge>
+    <edge source="bomberman.Main" target="bomberman.gui.MainMenuGUI">
+      <point x="18.5" y="-14.5" />
+      <point x="1105.29428986711" y="1073.0" />
+      <point x="1117.54428986711" y="1073.0" />
+      <point x="30.75" y="14.5" />
+    </edge>
+    <edge source="bomberman.tests.KeyboardTest" target="bomberman.entitie.Bomb">
+      <point x="-15.0" y="-14.5" />
+      <point x="151.65262320044326" y="939.0" />
+      <point x="190.09523809523807" y="939.0" />
+      <point x="190.09523809523807" y="489.0" />
+      <point x="135.69134482281288" y="489.0" />
+      <point x="-28.799999999999955" y="36.5" />
+    </edge>
+    <edge source="bomberman.tests.GameEngineTest" target="bomberman.entitie.basic.Floor">
+      <point x="34.0" y="-14.5" />
+      <point x="971.2942898671099" y="989.0" />
+      <point x="1848.6216708194909" y="989.0" />
+      <point x="1848.6216708194909" y="324.0" />
+      <point x="1728.8345238095237" y="324.0" />
+      <point x="30.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.component.Board">
+      <point x="46.3125" y="-36.5" />
+      <point x="1042.0651232004432" y="746.0" />
+      <point x="1534.5344545957923" y="746.0" />
+      <point x="1534.5344545957923" y="489.0" />
+      <point x="1515.139527962348" y="489.0" />
+      <point x="18.85714285714289" y="47.5" />
+    </edge>
+    <edge source="bomberman.observers.BombObserver" target="bomberman.entitie.Bomb">
+      <point x="15.875" y="14.5" />
+      <point x="256.18273809523805" y="304.0" />
+      <point x="200.49134482281283" y="304.0" />
+      <point x="36.0" y="-36.5" />
+    </edge>
+    <edge source="bomberman.entitie.Bomb" target="bomberman.component.Block">
+      <point x="-36.0" y="-36.5" />
+      <point x="128.31484288482852" y="165.0" />
+      <point x="1186.5648428848285" y="165.0" />
+      <point x="-47.125" y="47.5" />
+    </edge>
+    <edge source="bomberman.tests.BoardTest" target="bomberman.entitie.basic.Wall">
+      <point x="12.625" y="-14.5" />
+      <point x="1661.2466708194909" y="294.0" />
+      <point x="1597.1202380952382" y="294.0" />
+      <point x="27.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.Bomb" target="bomberman.observers.BombObserver">
+      <point x="12.0" y="-36.5" />
+      <point x="176.49134482281283" y="294.0" />
+      <point x="224.43273809523805" y="294.0" />
+      <point x="-15.875" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.exception.GhostMovingException">
+      <point x="7.3125" y="-36.5" />
+      <point x="1003.0651232004432" y="666.0" />
+      <point x="1096.2526232004432" y="666.0" />
+      <point x="-42.5" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.box.Case">
+      <point x="-12.1875" y="-36.5" />
+      <point x="983.5651232004432" y="666.0" />
+      <point x="808.8618355481732" y="666.0" />
+      <point x="-38.25" y="47.5" />
+    </edge>
+    <edge source="bomberman.inputOutput.Keyboard" target="bomberman.observers.KeyboardObserver">
+      <point x="21.0" y="-36.5" />
+      <point x="465.3148428848285" y="499.0" />
+      <point x="490.32467815614615" y="499.0" />
+      <point x="-48.66666666666663" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.Player">
+      <point x="-75.5625" y="-36.5" />
+      <point x="920.1901232004432" y="796.0" />
+      <point x="123.8809523809523" y="796.0" />
+      <point x="22.28571428571422" y="58.5" />
+    </edge>
+    <edge source="bomberman.entitie.Ghost" target="bomberman.component.Block">
+      <point x="-12.0" y="-47.5" />
+      <point x="1238.7526232004432" y="499.0" />
+      <point x="1245.2526232004432" y="499.0" />
+      <point x="1245.2526232004432" y="215.0" />
+      <point x="1230.0648428848285" y="215.0" />
+      <point x="-3.625" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.observers.BombObserver">
+      <point x="-31.6875" y="-36.5" />
+      <point x="964.0651232004432" y="706.0" />
+      <point x="622.4913448228128" y="706.0" />
+      <point x="622.4913448228128" y="304.0" />
+      <point x="287.93273809523805" y="304.0" />
+      <point x="47.625" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.inputOutput.Sound">
+      <point x="-26.8125" y="-36.5" />
+      <point x="968.9401232004432" y="696.0" />
+      <point x="654.3776232004432" y="696.0" />
+      <point x="654.3776232004432" y="294.0" />
+      <point x="474.0023428848285" y="294.0" />
+      <point x="10.125" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.Fire">
+      <point x="70.6875" y="-36.5" />
+      <point x="1066.4401232004432" y="796.0" />
+      <point x="1870.2883374861576" y="796.0" />
+      <point x="-22.333333333333332" y="14.5" />
+    </edge>
+    <edge source="bomberman.tests.GameEngineTest" target="bomberman.entitie.Bomb">
+      <point x="-34.0" y="-14.5" />
+      <point x="903.2942898671099" y="919.0" />
+      <point x="201.09523809523807" y="919.0" />
+      <point x="201.09523809523807" y="479.0" />
+      <point x="164.49134482281283" y="479.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="bomberman.entitie.box.Bonus" target="bomberman.component.Block">
+      <point x="0.0" y="-47.5" />
+      <point x="768.7526232004432" y="185.0" />
+      <point x="1201.0648428848285" y="185.0" />
+      <point x="-32.625" y="47.5" />
+    </edge>
+    <edge source="bomberman.entitie.Ghost" target="bomberman.exception.GhostMovingException">
+      <point x="-60.0" y="-47.5" />
+      <point x="1190.7526232004432" y="499.0" />
+      <point x="1181.2526232004432" y="499.0" />
+      <point x="42.5" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.box.Case" target="bomberman.entitie.box.FinalGate">
+      <point x="43.71428571428578" y="-47.5" />
+      <point x="890.826121262459" y="499.0" />
+      <point x="900.7526232004432" y="499.0" />
+      <point x="-57.0" y="25.5" />
+    </edge>
+    <edge source="bomberman.entitie.Player" target="bomberman.component.Block">
+      <point x="-19.5" y="-58.5" />
+      <point x="82.09523809523807" y="499.0" />
+      <point x="54.841344822812744" y="499.0" />
+      <point x="54.841344822812744" y="145.0" />
+      <point x="1172.0648428848285" y="145.0" />
+      <point x="-61.625" y="47.5" />
+    </edge>
+    <edge source="bomberman.tests.GameEngineTest" target="bomberman.entitie.Player">
+      <point x="-56.66666666666674" y="-14.5" />
+      <point x="880.6276232004432" y="929.0" />
+      <point x="129.16666666666663" y="929.0" />
+      <point x="129.16666666666663" y="806.0" />
+      <point x="101.59523809523807" y="806.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.Bomb">
+      <point x="-56.0625" y="-36.5" />
+      <point x="939.6901232004432" y="756.0" />
+      <point x="225.25148809523807" y="756.0" />
+      <point x="225.25148809523807" y="459.0" />
+      <point x="222.09134482281274" y="459.0" />
+      <point x="57.59999999999991" y="36.5" />
+    </edge>
+    <edge source="bomberman.entitie.basic.Wall" target="bomberman.component.Block">
+      <point x="-18.0" y="-14.5" />
+      <point x="1552.1202380952382" y="165.0" />
+      <point x="1266.3148428848285" y="165.0" />
+      <point x="32.625" y="47.5" />
+    </edge>
+    <edge source="bomberman.component.Board" target="bomberman.entitie.basic.Wall">
+      <point x="18.857142857142833" y="-47.5" />
+      <point x="1515.139527962348" y="294.0" />
+      <point x="1561.1202380952382" y="294.0" />
+      <point x="-9.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.component.Board" target="bomberman.component.Block">
+      <point x="-56.571428571428555" y="-47.5" />
+      <point x="1439.7109565337764" y="324.0" />
+      <point x="1444.3505571705427" y="324.0" />
+      <point x="1444.3505571705427" y="195.0" />
+      <point x="1244.5648428848285" y="195.0" />
+      <point x="10.875" y="47.5" />
+    </edge>
+    <edge source="bomberman.inputOutput.Keyboard" target="bomberman.exception.WrongKeyException">
+      <point x="-21.0" y="-36.5" />
+      <point x="423.3148428848285" y="499.0" />
+      <point x="407.24134482281283" y="499.0" />
+      <point x="38.75" y="14.5" />
+    </edge>
+    <edge source="bomberman.tests.GameEngineTest" target="bomberman.entitie.Fire">
+      <point x="56.66666666666674" y="-14.5" />
+      <point x="993.9609565337767" y="999.0" />
+      <point x="1898.8350498338875" y="999.0" />
+      <point x="1898.8350498338875" y="806.0" />
+      <point x="1914.9550041528241" y="806.0" />
+      <point x="22.33333333333337" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.box.FinalGate" target="bomberman.component.Block">
+      <point x="0.0" y="-25.5" />
+      <point x="957.7526232004432" y="215.0" />
+      <point x="1222.8148428848285" y="215.0" />
+      <point x="-10.875" y="47.5" />
+    </edge>
+    <edge source="bomberman.entitie.Fire" target="bomberman.component.Block">
+      <point x="16.75" y="-14.5" />
+      <point x="1909.3716708194909" y="499.0" />
+      <point x="1898.1216708194909" y="499.0" />
+      <point x="1898.1216708194909" y="115.0" />
+      <point x="1302.5648428848285" y="115.0" />
+      <point x="68.875" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.gui.BombermanGUI">
+      <point x="36.5625" y="-36.5" />
+      <point x="1032.3151232004432" y="726.0" />
+      <point x="1486.1594545957923" y="726.0" />
+      <point x="33.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.gui.MainMenuGUI" target="bomberman.GameEngine">
+      <point x="30.75" y="-14.5" />
+      <point x="1117.54428986711" y="969.0" />
+      <point x="1060.7526232004432" y="969.0" />
+      <point x="65.0" y="36.5" />
+    </edge>
+    <edge source="bomberman.entitie.box.Case" target="bomberman.entitie.box.Bonus">
+      <point x="-65.57142857142856" y="-47.5" />
+      <point x="781.5404069767446" y="499.0" />
+      <point x="748.5026232004432" y="499.0" />
+      <point x="-20.25" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.entitie.basic.Wall">
+      <point x="51.1875" y="-36.5" />
+      <point x="1046.9401232004432" y="756.0" />
+      <point x="1587.6216708194909" y="756.0" />
+      <point x="1587.6216708194909" y="294.0" />
+      <point x="1579.1202380952382" y="294.0" />
+      <point x="9.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.component.Board" target="bomberman.entitie.basic.Floor">
+      <point x="56.571428571428555" y="-47.5" />
+      <point x="1552.8538136766338" y="314.0" />
+      <point x="1683.8345238095237" y="314.0" />
+      <point x="-15.0" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.observers.GhostObserver">
+      <point x="21.9375" y="-36.5" />
+      <point x="1017.6901232004432" y="696.0" />
+      <point x="1370.91928986711" y="696.0" />
+      <point x="41.66666666666674" y="14.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.component.Block">
+      <point x="-21.9375" y="-36.5" />
+      <point x="973.8151232004432" y="686.0" />
+      <point x="677.2526232004432" y="686.0" />
+      <point x="677.2526232004432" y="175.0" />
+      <point x="1193.8148428848285" y="175.0" />
+      <point x="-39.875" y="47.5" />
+    </edge>
+    <edge source="bomberman.tests.BoardTest" target="bomberman.component.Board">
+      <point x="-37.875" y="-14.5" />
+      <point x="1610.7466708194909" y="479.0" />
+      <point x="1533.9966708194909" y="479.0" />
+      <point x="37.71428571428572" y="47.5" />
+    </edge>
+    <edge source="bomberman.GameEngine" target="bomberman.observers.KeyboardObserver">
+      <point x="-36.5625" y="-36.5" />
+      <point x="959.1901232004432" y="716.0" />
+      <point x="562.3773428848285" y="716.0" />
+      <point x="562.3773428848285" y="499.0" />
+      <point x="587.6580114894793" y="499.0" />
+      <point x="48.66666666666663" y="14.5" />
+    </edge>
+    <edge source="bomberman.entitie.Bomb" target="bomberman.inputOutput.Sound">
+      <point x="60.0" y="-36.5" />
+      <point x="224.49134482281283" y="314.0" />
+      <point x="433.5023428848285" y="314.0" />
+      <point x="-30.375" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6407908428720084" x="875.0" y="493.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
