@@ -31,10 +31,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/bomberman/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/bomberman/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="5950">
+              <caret line="358" column="54" selection-start-line="358" selection-start-column="54" selection-end-line="358" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,12 +76,18 @@
       <find>Floor</find>
       <find>getBomb</find>
       <find>setBomb</find>
+      <find>TMP</find>
+      <find>table</find>
+      <find>tmpTable</find>
+      <find>Temporary</find>
+      <find>Reference to the</find>
+      <find>Reference to the</find>
+      <find>tmp</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Bomberman/PositionOnTheBoard.java" />
         <option value="$PROJECT_DIR$/src/Bomberman/Box.java" />
         <option value="$PROJECT_DIR$/src/Bomberman/Player.java" />
         <option value="$PROJECT_DIR$/src/Bomberman/Fire.java" />
@@ -128,6 +137,7 @@
         <option value="$PROJECT_DIR$/src/bomberman/InputOutput/Keyboard.java" />
         <option value="$PROJECT_DIR$/src/bomberman/inputOutput/Keyboard.java" />
         <option value="$PROJECT_DIR$/src/bomberman/entitie/box/Case.java" />
+        <option value="$PROJECT_DIR$/src/bomberman/component/Board.java" />
         <option value="$PROJECT_DIR$/src/bomberman/GameEngine.java" />
       </list>
     </option>
@@ -154,18 +164,7 @@
             <path>
               <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
               <item name="BombermanFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BombermanFinal" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BombermanFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bomberman" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BombermenV8" type="b2602c69:ProjectViewProjectNode" />
@@ -183,11 +182,11 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548024971632" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548106477787" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -350,6 +349,7 @@
       <workItem from="1548024722903" duration="257000" />
       <workItem from="1548025813892" duration="271000" />
       <workItem from="1548026145922" duration="240000" />
+      <workItem from="1548102508831" duration="3915000" />
     </task>
     <servers />
   </component>
@@ -386,7 +386,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160695000" />
+    <option name="totallyTimeSpent" value="164610000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,9 +399,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2147651" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21744967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -471,7 +470,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.desktop/java/awt/event/KeyListener.java" />
     <entry file="file://$PROJECT_DIR$/src/Bomberman/Factories/BoxFactory.java" />
     <entry file="file://$PROJECT_DIR$/src/Bomberman/Factories/BoardFactory.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.desktop/java/awt/event/KeyEvent.java" />
@@ -581,18 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3757">
-          <caret line="221" column="37" lean-forward="true" selection-start-line="221" selection-start-column="37" selection-end-line="221" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6533#6534#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/entitie/Fire.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -635,16 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/inputOutput/Sound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -697,16 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/component/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1156,138 +1122,101 @@
     <entry file="file://$PROJECT_DIR$/Bomberman.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/bomberman.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>bomberman</OriginalElement>
-          <nodes>
-            <node x="483.0" y="327.0">bomberman.component.Board</node>
-            <node x="181.0" y="524.0">bomberman.gui.BombermanGUI</node>
-            <node x="1088.0" y="327.0">bomberman.exception.WrongKeyException</node>
-            <node x="0.0" y="198.0">bomberman.entitie.box.FinalGate</node>
-            <node x="703.0" y="209.0">bomberman.entitie.basic.Wall</node>
-            <node x="358.0" y="524.0">bomberman.gui.MainMenuGUI</node>
-            <node x="527.0" y="165.0">bomberman.entitie.Player</node>
-            <node x="292.0" y="327.0">bomberman.observers.KeyboardObserver</node>
-            <node x="0.0" y="327.0">bomberman.observers.GhostObserver</node>
-            <node x="873.0" y="327.0">bomberman.exception.GhostMovingException</node>
-            <node x="354.0" y="176.0">bomberman.entitie.box.Case</node>
-            <node x="854.0" y="524.0">bomberman.tests.PlayerTest</node>
-            <node x="172.0" y="176.0">bomberman.entitie.box.Bonus</node>
-            <node x="959.0" y="209.0">bomberman.entitie.basic.Floor</node>
-            <node x="0.0" y="598.0">bomberman.Main</node>
-            <node x="526.0" y="524.0">bomberman.tests.KeyboardTest</node>
-            <node x="1146.0" y="524.0">bomberman.inputOutput.Sound</node>
-            <node x="666.5" y="0.0">bomberman.component.Block</node>
-            <node x="1218.0" y="209.0">bomberman.entitie.Fire</node>
-            <node x="0.0" y="524.0">bomberman.tests.GameEngineTest</node>
-            <node x="130.5" y="406.0">bomberman.GameEngine</node>
-            <node x="145.0" y="327.0">bomberman.observers.BombObserver</node>
-            <node x="795.0" y="176.0">bomberman.entitie.Ghost</node>
-            <node x="1054.0" y="187.0">bomberman.entitie.Bomb</node>
-            <node x="660.0" y="327.0">bomberman.inputOutput.Keyboard</node>
-            <node x="1000.0" y="524.0">bomberman.tests.BoardTest</node>
-            <node x="691.0" y="524.0">bomberman.gui.GameEndGUI</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="bomberman.entitie.box.Case" target="bomberman.component.Block">
-              <point x="0.0" y="-47.5" />
-              <point x="430.5" y="135.0" />
-              <point x="706.7777777777778" y="135.0" />
-              <point x="-32.22222222222217" y="47.5" />
-            </edge>
-            <edge source="bomberman.GameEngine" target="bomberman.observers.BombObserver">
-              <point x="0.0" y="-36.5" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="bomberman.GameEngine" target="bomberman.observers.GhostObserver">
-              <point x="-52.0" y="-36.5" />
-              <point x="156.5" y="381.0" />
-              <point x="62.5" y="381.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="bomberman.entitie.basic.Wall" target="bomberman.component.Block">
-              <point x="0.0" y="-14.5" />
-              <point x="0.0" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.box.FinalGate" target="bomberman.component.Block">
-              <point x="0.0" y="-25.5" />
-              <point x="76.0" y="115.0" />
-              <point x="674.5555555555555" y="115.0" />
-              <point x="-64.44444444444446" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.basic.Floor" target="bomberman.component.Block">
-              <point x="0.0" y="-14.5" />
-              <point x="996.5" y="135.0" />
-              <point x="771.2222222222223" y="135.0" />
-              <point x="32.222222222222285" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.Fire" target="bomberman.component.Block">
-              <point x="0.0" y="-14.5" />
-              <point x="1251.5" y="115.0" />
-              <point x="803.4444444444445" y="115.0" />
-              <point x="64.44444444444446" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.box.Bonus" target="bomberman.component.Block">
-              <point x="0.0" y="-47.5" />
-              <point x="253.0" y="125.0" />
-              <point x="690.6666666666666" y="125.0" />
-              <point x="-48.33333333333337" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.Ghost" target="bomberman.component.Block">
-              <point x="0.0" y="-47.5" />
-              <point x="867.0" y="145.0" />
-              <point x="755.1111111111111" y="145.0" />
-              <point x="16.111111111111086" y="47.5" />
-            </edge>
-            <edge source="bomberman.GameEngine" target="bomberman.observers.KeyboardObserver">
-              <point x="52.0" y="-36.5" />
-              <point x="260.5" y="381.0" />
-              <point x="365.0" y="381.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="bomberman.entitie.Bomb" target="bomberman.component.Block">
-              <point x="0.0" y="-36.5" />
-              <point x="1126.0" y="125.0" />
-              <point x="787.3333333333334" y="125.0" />
-              <point x="48.33333333333337" y="47.5" />
-            </edge>
-            <edge source="bomberman.entitie.Player" target="bomberman.component.Block">
-              <point x="0.0" y="-58.5" />
-              <point x="605.0" y="145.0" />
-              <point x="722.8888888888889" y="145.0" />
-              <point x="-16.111111111111086" y="47.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.5710549258936356" x="350.0" y="400.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Properties</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bomberman/GameEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+    <entry file="file://$PROJECT_DIR$/src/bomberman/inputOutput/Sound.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="229" column="13" lean-forward="true" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/bomberman/gui/MainMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1675">
+          <caret line="221" column="37" lean-forward="true" selection-start-line="221" selection-start-column="37" selection-end-line="221" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bomberman/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/component/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bomberman.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>bomberman</OriginalElement>
+          <nodes>
+            <node x="" y="">bomberman.gui.BombermanGUI</node>
+            <node x="" y="">bomberman.component.Board</node>
+            <node x="" y="">bomberman.exception.WrongKeyException</node>
+            <node x="" y="">bomberman.entitie.box.FinalGate</node>
+            <node x="" y="">bomberman.entitie.basic.Wall</node>
+            <node x="" y="">bomberman.gui.MainMenuGUI</node>
+            <node x="" y="">bomberman.entitie.Player</node>
+            <node x="" y="">bomberman.observers.KeyboardObserver</node>
+            <node x="" y="">bomberman.observers.GhostObserver</node>
+            <node x="" y="">bomberman.entitie.box.Case</node>
+            <node x="" y="">bomberman.exception.GhostMovingException</node>
+            <node x="" y="">bomberman.tests.PlayerTest</node>
+            <node x="" y="">bomberman.entitie.box.Bonus</node>
+            <node x="" y="">bomberman.Main</node>
+            <node x="" y="">bomberman.entitie.basic.Floor</node>
+            <node x="" y="">bomberman.tests.KeyboardTest</node>
+            <node x="" y="">bomberman.inputOutput.Sound</node>
+            <node x="" y="">bomberman.component.Block</node>
+            <node x="" y="">bomberman.entitie.Fire</node>
+            <node x="" y="">bomberman.tests.GameEngineTest</node>
+            <node x="" y="">bomberman.GameEngine</node>
+            <node x="" y="">bomberman.observers.BombObserver</node>
+            <node x="" y="">bomberman.entitie.Ghost</node>
+            <node x="" y="">bomberman.entitie.Bomb</node>
+            <node x="" y="">bomberman.inputOutput.Keyboard</node>
+            <node x="" y="">bomberman.tests.BoardTest</node>
+            <node x="" y="">bomberman.gui.GameEndGUI</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.6407908428720084" x="875.0" y="377.9457616109126" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bomberman/GameEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5950">
+          <caret line="358" column="54" selection-start-line="358" selection-start-column="54" selection-end-line="358" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

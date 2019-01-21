@@ -1,21 +1,13 @@
 package bomberman;
 
-import bomberman.component.Block;
-import bomberman.component.Board;
+import bomberman.component.*;
 import bomberman.entitie.*;
-import bomberman.entitie.basic.Floor;
-import bomberman.entitie.basic.Wall;
-import bomberman.entitie.box.Bonus;
-import bomberman.entitie.box.Case;
-import bomberman.entitie.box.FinalGate;
+import bomberman.entitie.basic.*;
+import bomberman.entitie.box.*;
 import bomberman.exception.GhostMovingException;
-import bomberman.gui.BombermanGUI;
-import bomberman.gui.GameEndGUI;
-import bomberman.inputOutput.Keyboard;
-import bomberman.inputOutput.Sound;
-import bomberman.observers.BombObserver;
-import bomberman.observers.GhostObserver;
-import bomberman.observers.KeyboardObserver;
+import bomberman.gui.*;
+import bomberman.inputOutput.*;
+import bomberman.observers.*;
 import javax.swing.*;
 import java.util.Random;
 
@@ -64,14 +56,10 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
 
         if (gameMode == 1){                             // Singleplayer mode
             this.keyboard.setSecondId((byte) 0);        // It allows using keys assigned to player2 as well
-            Block[][] tmpTable = board.getTable();
-            tmpTable[1][1] = players[0];
-            this.board.setTable(tmpTable);
+            board.getTable()[1][1] = players[0];
         } else if (gameMode == 2 || gameMode == 3){     // Multiplayer or Cooperative mode
-            Block [][] tmpTable = board.getTable();
-            tmpTable[1][1] = players[0];
-            tmpTable[this.board.getTableLength()-2][this.board.getTableLength()-2] = players[1];
-            this.board.setTable(tmpTable);
+            this.board.getTable()[1][1] = players[0];
+            this.board.getTable()[this.board.getTableLength()-2][this.board.getTableLength()-2] = players[1];
         }
 
         this.insertCases();
@@ -101,70 +89,62 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
      *******************************************************************/
 
     public void insertCases(){              // Cases randomization, by default cases covers 25% of the game field
-        Block [][] tmpTable = board.getTable();
         Random random = new Random();
         int row, column;
         for (int i=0; i<(board.getTableLength()*board.getTableLength())/4; ++i){
             row = 0;
             column = 0;
-            while (!(tmpTable[row][column] instanceof Floor && row*column != 2 && row*column != (board.getTableLength()-2)*(board.getTableLength()-3))){
+            while (!(this.board.getTable()[row][column] instanceof Floor && row*column != 2 && row*column != (board.getTableLength()-2)*(board.getTableLength()-3))){
                 row = random.nextInt(board.getTableLength()-1);
                 column = random.nextInt(board.getTableLength()-1);
             }
-            tmpTable[row][column] = new Case();
+            this.board.getTable()[row][column] = new Case();
         }
-        board.setTable(tmpTable);
     }
 
-    public void raffleBonus(){       // Bonuses randomization, by default bonuses are hidden in 25% of cases
-        Block [][] tmpTable = board.getTable();
+    public void raffleBonus(){                            // Bonuses randomization, by default bonuses are hidden in 25% of cases
         Random random = new Random();
         int row, column, noOfBonus;
         for (int i=0; i<(board.getTableLength()*board.getTableLength())/16; ++i) {
             row = 0;
             column = 0;
-            while (!(tmpTable[row][column] instanceof Case)) {
+            while (!(this.board.getTable()[row][column] instanceof Case)) {
                 row = random.nextInt(board.getTableLength() - 1);
                 column = random.nextInt(board.getTableLength() - 1);
             }
             noOfBonus = random.nextInt(2);
-            ((Case) tmpTable[row][column]).setBonus(noOfBonus);
+            ((Case) this.board.getTable()[row][column]).setBonus(noOfBonus);
         }
-        board.setTable(tmpTable);
     }
 
-    public void insertGhosts(){             // Ghosts randomization and adding to separate threads
-        Block [][] tmpTable = board.getTable();
+    public void insertGhosts(){                           // Ghosts randomization and adding to separate threads
         Random random = new Random();
         int row, column;
         for (int i=0; i<numberOfGhosts; ++i){
             row = 0;
             column = 0;
-            while (!(tmpTable[row][column] instanceof Floor && row != 1  && column != 1 )){
+            while (!(this.board.getTable()[row][column] instanceof Floor && row != 1  && column != 1 )){
                 row = random.nextInt(board.getTableLength()-2);
                 column = random.nextInt(board.getTableLength()-2);
             }
             Ghost newGhost = new Ghost(row, column);
             newGhost.subscribe(this);
-            tmpTable[row][column] = newGhost;
+            this.board.getTable()[row][column] = newGhost;
             ghostThreads[i] = new Thread(newGhost);
             ghostThreads[i].start();
         }
-        board.setTable(tmpTable);
     }
 
     void raffleGate(){      // Drawing a final gate for one of the cases which does not contain a bonus
-        Block [][] tmpTable = board.getTable();
         Random random = new Random();
         int row = 0;
         int column = 0;
-        while (!(tmpTable[row][column] instanceof Case && !((Case) tmpTable[row][column]).getBonus().isSet())){
+        while (!(this.board.getTable()[row][column] instanceof Case && !((Case) this.board.getTable()[row][column]).getBonus().isSet())){
             row = random.nextInt(board.getTableLength()-1);
             column = random.nextInt(board.getTableLength()-1);
         }
         this.finalGate = FinalGate.getInstance();
-        ((Case) tmpTable[row][column]).setFinalGate(finalGate);
-        board.setTable(tmpTable);
+        ((Case) this.board.getTable()[row][column]).setFinalGate(finalGate);
     }
 
 
@@ -172,13 +152,13 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
      *                  Update Player Position                          *
      ********************************************************************/
 
-    public void changePlayerPosition (byte id, Block [][] tmpTable, int y_startup, int x_startup, int y_changed, int x_changed) {
-        tmpTable[y_changed][x_changed] = players[id];
+    public void changePlayerPosition (byte id, int y_startup, int x_startup, int y_changed, int x_changed) {
+        this.board.getTable()[y_changed][x_changed] = players[id];
         players[id].setRow(y_changed);
         players[id].setColumn(x_changed);
 
-        if (tmpTable[y_startup][x_startup] instanceof Player) {
-            tmpTable[y_startup][x_startup] = board.getFloor();
+        if (this.board.getTable()[y_startup][x_startup] instanceof Player) {
+            this.board.getTable()[y_startup][x_startup] = board.getFloor();
                     /* If firstly player drops bomb and next preses something else
                     then we mustn't change this Bomb into the Floor */
         } else {
@@ -189,12 +169,10 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
             } catch (NullPointerException e) {
             }
         }
-        board.setTable(tmpTable);
         frame.screenReload();
     }
 
     public void move(byte id, int add2Row, int add2Column){
-        Block [][] tmpTable = board.getTable();
         final int y_startup = players[id].getRow();
         final int x_startup = players[id].getColumn();
         final int y_changed = y_startup + add2Row;
@@ -202,30 +180,29 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
 
 
         if (players[id].isStillAlive() == true) {
-            if (tmpTable[y_changed][x_changed] instanceof Floor) {
-                changePlayerPosition(id, tmpTable, y_startup, x_startup, y_changed, x_changed);  // Player moves into floor
+            if (this.board.getTable()[y_changed][x_changed] instanceof Floor) {
+                changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);               // Player moves into floor
                 Sound.play("sounds\\move.wav");
-            } else if (tmpTable[y_changed][x_changed] instanceof Bonus) {
-                if (((Bonus) tmpTable[y_changed][x_changed]).isAddBomb()) {
-                    players[id].setLimitOfBombs((byte) (players[id].getLimitOfBombs() + 1));     // Collecting addBomb bonus
-                } else if (((Bonus) tmpTable[y_changed][x_changed]).isIncreaseFire()) {
-                    players[id].setPower(players[id].getPower() + 1);                            // Collecting increaseFire bonus
+            } else if (this.board.getTable()[y_changed][x_changed] instanceof Bonus) {
+                if (((Bonus) this.board.getTable()[y_changed][x_changed]).isAddBomb()) {
+                    players[id].setLimitOfBombs((byte) (players[id].getLimitOfBombs() + 1));        // Collecting addBomb bonus
+                } else if (((Bonus) this.board.getTable()[y_changed][x_changed]).isIncreaseFire()) {
+                    players[id].setPower(players[id].getPower() + 1);                               // Collecting increaseFire bonus
                 }
-                changePlayerPosition(id, tmpTable, y_startup, x_startup, y_changed, x_changed);  // Player moves into bonus
+                changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);               // Player moves into bonus
                 Sound.play("sounds\\bonus.wav");
-            } else if (tmpTable[y_changed][x_changed] instanceof Fire) {
-                players[id].setStillAlive(false);                                                // Killing player when moves into fire
-                changePlayerPosition(id, tmpTable, y_startup, x_startup, y_changed, x_changed);
+            } else if (this.board.getTable()[y_changed][x_changed] instanceof Fire) {
+                    players[id].setStillAlive(false);                                               // Killing player when moves into fire
+                changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);
                 checkPlayerWin();
                 checkDefeat();
-            } else if (tmpTable[y_changed][x_changed] instanceof FinalGate &&
-                    ((FinalGate) tmpTable[y_changed][x_changed]).isOpenGate()) {
-                changePlayerPosition(id, tmpTable, y_startup, x_startup, y_changed, x_changed);
-                tmpTable[y_changed][x_changed].setImage(new ImageIcon("images\\winnerPlayer.jpg"));
-                board.setTable(tmpTable);
+            } else if (this.board.getTable()[y_changed][x_changed] instanceof FinalGate &&
+                    ((FinalGate) this.board.getTable()[y_changed][x_changed]).isOpenGate()) {
+                changePlayerPosition(id, y_startup, x_startup, y_changed, x_changed);
+                this.board.getTable()[y_changed][x_changed].setImage(new ImageIcon("images\\winnerPlayer.jpg"));
                 frame.screenReload();
                 Sound.play("sounds\\win.wav");
-                this.victory = true;                                                              // Player enters the final gate
+                this.victory = true;                                                                // Player enters the final gate
                 gameEnd();
             }
         }
@@ -270,28 +247,25 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
             bombThreads[bombCount].start();                 // Starting the new thread
             this.bombCount++;
 
-            Block[][] tmpTable = board.getTable();
-            tmpTable[players[id].getRow()][players[id].getColumn()] = newBomb;
-            board.setTable(tmpTable);                       // Set icon of the bomb on the board
+            this.board.getTable()[players[id].getRow()][players[id].getColumn()] = newBomb;
 
             frame.screenReload();
         }
     }
 
     public void setBurned(int row, int column) {                              // Setting fire
-        Block [][] tmpTable = this.board.getTable();
-        if (!(tmpTable[row][column] instanceof Wall || tmpTable[row][column] instanceof FinalGate)) {  // Can not set fire to wall and final gate
-            if (tmpTable[row][column] instanceof Case) {
-                ((Case) tmpTable[row][column]).setDestroyed(true);            // Setting fire to cases
-            }else if (tmpTable[row][column] instanceof Player) {
-                ((Player) tmpTable[row][column]).setStillAlive(false);        // Setting fire to player and killing
+        if (!(this.board.getTable()[row][column] instanceof Wall || this.board.getTable()[row][column] instanceof FinalGate)) {  // Can not set fire to wall and final gate
+            if (this.board.getTable()[row][column] instanceof Case) {
+                ((Case) this.board.getTable()[row][column]).setDestroyed(true);            // Setting fire to cases
+            }else if (this.board.getTable()[row][column] instanceof Player) {
+                ((Player) this.board.getTable()[row][column]).setStillAlive(false);        // Setting fire to player and killing
                 this.checkDefeat();
                 this.checkPlayerWin();
-            }else if (tmpTable[row][column] instanceof Ghost){
-                ((Ghost) tmpTable[row][column]).setStillAlive(false);         // Setting fore to ghost and killing
-                tmpTable[row][column].setImage(new ImageIcon("images\\burnedGhost.jpg"));
+            }else if (this.board.getTable()[row][column] instanceof Ghost){
+                ((Ghost) this.board.getTable()[row][column]).setStillAlive(false);         // Setting fore to ghost and killing
+                this.board.getTable()[row][column].setImage(new ImageIcon("images\\burnedGhost.jpg"));
             }else{
-                tmpTable[row][column] = new Fire();
+                this.board.getTable()[row][column] = new Fire();
             }
         }
 
@@ -300,11 +274,9 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
                 players[i].setStillAlive(false);
                 this.checkDefeat();
                 this.checkPlayerWin();
-                tmpTable[row][column].setImage(new ImageIcon("images\\burnedPlayer.jpg")); // When player had planted the bomb and did not escaped
+                this.board.getTable()[row][column].setImage(new ImageIcon("images\\burnedPlayer.jpg")); // When player had planted the bomb and did not escaped
             }
         }
-
-        this.board.setTable(tmpTable);
     }
 
     @Override
@@ -319,8 +291,8 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
 
         for(int i = 1; i <= power; i++) {                               // Bomb exploding range depends on the power
             if (column + i > board.getTableLength() - 1) break;         // Not to cross the boundaries of the board
-            Block tmp = board.getTable()[row][column + i];              // Temporary block
-            setBurned(row, column + i);                         // Burning the neighboring block
+            Block tmp = board.getTable()[row][column + i];              // Reference to the block
+            setBurned(row, column + i);                          // Burning the neighboring block
             if(!(tmp instanceof Floor || tmp instanceof Bonus)) break;  // Not to cross burned object and burn the next
         }
         for(int i = 1; i <= power; i++) {                               // Second direction
@@ -346,29 +318,27 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
     }
 
 
-    public void setFaded(int row, int column){                            // The fire disappears after explosion
-        Block [][] tmpTable = this.board.getTable();
-        if (tmpTable[row][column] instanceof Fire){
-            tmpTable[row][column] = this.board.getFloor();                // Deleting the fire
-        } else if (tmpTable[row][column] instanceof Case){
-            Bonus tmpBonus = ((Case) tmpTable[row][column]).getBonus();
-            if (tmpBonus.isSet() == true) {                                                   // Checking if case contains a bonus
-                tmpTable[row][column] = tmpBonus;                                             // Setting the hidden bonus
-            }else if (((Case) tmpTable[row][column]).getFinalGate() != null){                 // Checking whether final gate is hidden
-                tmpTable[row][column] = ((Case) tmpTable[row][column]).getFinalGate();        // Setting final gate
-            } else {
-                tmpTable[row][column] = this.board.getFloor();            // Deleting the burned case
+    public void setFaded(int row, int column){                                                  // The fire disappears after explosion
+        if (this.board.getTable()[row][column] instanceof Fire){
+            this.board.getTable()[row][column] = this.board.getFloor();                         // Deleting the fire
+        } else if (this.board.getTable()[row][column] instanceof Case){
+            Bonus tmpBonus = ((Case) this.board.getTable()[row][column]).getBonus();
+            if (tmpBonus.isSet() == true) {                                                     // Checking if case contains a bonus
+                this.board.getTable()[row][column] = tmpBonus;                                  // Setting the hidden bonus
+            }else if (((Case) this.board.getTable()[row][column]).getFinalGate() != null){      // Checking whether final gate is hidden
+                this.board.getTable()[row][column] = ((Case) this.board.getTable()[row][column]).getFinalGate();
+            } else {                                                                   // Setting final gate
+                this.board.getTable()[row][column] = this.board.getFloor();            // Deleting the burned case
             }
-        }else if (tmpTable[row][column] instanceof Player){
-            tmpTable[row][column] = this.board.getFloor();                // Killing the player
-        }else if (tmpTable[row][column] instanceof Ghost){
-            tmpTable[row][column] = this.board.getFloor();                // Killing the ghost
+        }else if (this.board.getTable()[row][column] instanceof Player){
+            this.board.getTable()[row][column] = this.board.getFloor();                // Killing the player
+        }else if (this.board.getTable()[row][column] instanceof Ghost){
+            this.board.getTable()[row][column] = this.board.getFloor();                // Killing the ghost
             this.GhostOnTheBoard--;                                       // Decreasing the quantity of ghosts on the board
             if (this.GhostOnTheBoard == 0){
                 this.finalGate.openGate();                                // Opening the final gate when the last ghost is killed
             }
         }
-        this.board.setTable(tmpTable);
         gameEnd();
     }
 
@@ -385,8 +355,8 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
 
         for(int i = 1; i <= power; i++) {                           // Fire range depends on the bomb power
             if (column + i > board.getTableLength() - 1) break;     // Not to cross the boundaries of the board
-            Block tmp = board.getTable()[row][column + i];          // Temporary block
-            setFaded(row, column + i);                      // Removing the fire
+            Block tmp = board.getTable()[row][column + i];          // Reference to the block
+            setFaded(row, column + i);                       // Removing the fire
             if(!(tmp instanceof Fire)) break;                       // Not to cross burned object and remove the next
         }
         for(int i = 1; i <= power; i++) {
@@ -468,32 +438,30 @@ public class GameEngine implements KeyboardObserver, BombObserver, GhostObserver
      *                  Update Ghost Position                           *
      ********************************************************************/
 
-    public void changeGhostPosition (int row, int column, int rowAdd, int columnAdd, Block [][] tmpTable) {
-        tmpTable[row + rowAdd][column + columnAdd] = tmpTable[row][column];         // Temporary table
-        tmpTable[row][column] = board.getFloor();
-        tmpTable[row + rowAdd][column + columnAdd].setRow(row + rowAdd);            // Changing row of ghost position
-        tmpTable[row + rowAdd][column + columnAdd].setColumn(column + columnAdd);   // Changing column of ghost position
-        board.setTable(tmpTable);                                                   // Updating board state
+    public void changeGhostPosition (int row, int column, int rowAdd, int columnAdd) {
+        this.board.getTable()[row + rowAdd][column + columnAdd] = this.board.getTable()[row][column];         // Reference to the table
+        this.board.getTable()[row][column] = board.getFloor();
+        this.board.getTable()[row + rowAdd][column + columnAdd].setRow(row + rowAdd);            // Changing row of ghost position
+        this.board.getTable()[row + rowAdd][column + columnAdd].setColumn(column + columnAdd);   // Changing column of ghost position
         frame.screenReload();
     }
 
     @Override
     public void fly(int row, int column, int rowAdd, int columnAdd) throws GhostMovingException {            // Ghost movement
-        Block[][] tmpTable = board.getTable();
-        if (tmpTable[row + rowAdd][column + columnAdd] instanceof Player) {
-            ((Player) tmpTable[row + rowAdd][column + columnAdd]).setStillAlive(false);         // Killing the player when moving on him
+        if (this.board.getTable()[row + rowAdd][column + columnAdd] instanceof Player) {
+            ((Player) this.board.getTable()[row + rowAdd][column + columnAdd]).setStillAlive(false);         // Killing the player when moving on him
             checkDefeat();
             checkPlayerWin();
-            tmpTable[row][column].setImage(new ImageIcon("images\\eatenPlayer.jpg"));  // Setting icon of eaten player
-            changeGhostPosition(row, column, rowAdd, columnAdd, tmpTable);                      // Changing ghost position
+            this.board.getTable()[row][column].setImage(new ImageIcon("images\\eatenPlayer.jpg"));  // Setting icon of eaten player
+            changeGhostPosition(row, column, rowAdd, columnAdd);                      // Changing ghost position
             try {
                 Thread.currentThread().sleep(500);                                        // Stopping the ghost thread
             } catch (InterruptedException e) {
             }
             gameEnd();
-        } else if (tmpTable[row + rowAdd][column + columnAdd] instanceof Floor ||
-                tmpTable[row + rowAdd][column + columnAdd] instanceof Bonus) {
-            changeGhostPosition(row, column, rowAdd, columnAdd, tmpTable);                      // Changing ghost position
+        } else if (this.board.getTable()[row + rowAdd][column + columnAdd] instanceof Floor ||
+                this.board.getTable()[row + rowAdd][column + columnAdd] instanceof Bonus) {
+            changeGhostPosition(row, column, rowAdd, columnAdd);                      // Changing ghost position
         } else {
             throw new GhostMovingException();
         }

@@ -42,7 +42,6 @@ public class Board {
      ********************************************************************/
 
     public Block[][] getTable() { return table; }
-    public void setTable(Block[][] table) { this.table = table; }
 
     public int getTableLength() { return tableLength; }
 
